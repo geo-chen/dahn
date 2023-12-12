@@ -22,6 +22,8 @@ On the right, we see a preview of the logged commands, which would be correlated
 ![dahn](https://github.com/geo-chen/dahn/blob/main/resources/dahn-white.png )
 
 ## Usage
+
+Input your chatgpt API key into config.json.
 ```
 sudo apt install nodejs
 sudo npm install node-fetch
