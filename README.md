@@ -1,5 +1,11 @@
 # dahn - Deceptively Adaptive Honey Net
 
+## TL;DR
+
+What: LLM-based honeynet with dynamic adaptability 
+
+Why: Why use 50 instances when you can use 1, with added flexibility?
+
 ## Description
 Traditional honey nets offer static infrastructure and static responses. In DAHN, the infrastructure is abstracted, with lambda/gpt API (prompts stipulated) returning seemingly native responses to the threat actor, depending on the complexity index defined by the administrator. In other words, responses are dynamically crafted to entrap and retain threat actors, internal and external, in this environment for as long as possible, giving them a balance of false hope and realistic obstacles as they pass through our simulated layers of defense. Our AI-powered honey net mimics a given corporate environment to create a fictitious digital twin and embeds a controlled-level of simulated vulnerabilities/weaknesses to attract, distract, learn from, and attribute threat actors. The outputs are decoys, diversion, fingerprints, IoCs and IoAs, attributes, TTPs and behaviors, and used to augment threat detection and cyber defense strategies.
 
@@ -19,7 +25,7 @@ On the right, we see a preview of the logged commands, which would be correlated
 ![dahn](https://github.com/geo-chen/dahn/blob/main/resources/preview0.png )
 
 ## Architecture
-![dahn](https://github.com/geo-chen/dahn/blob/main/resources/dahn-white.png )
+![image](https://github.com/geo-chen/dahn/assets/2404584/c272d63b-8e86-4dcb-b346-a92181c8138a)
 
 ## Usage
 
@@ -29,3 +35,22 @@ sudo apt install nodejs
 sudo npm install node-fetch
 node --experimental-modules server.mjs
 ```
+
+## Value
+`low cost`
+ - Infrastructure is lightweight
+ - “Infrastructure” is also dynamic
+ - Scalability is abstracted
+ - Amplification on effort vs time wasted by adversaries
+
+`adaptive`
+ - Depending on how the attack progresses and what kinds of intel we want to collect, we shape the honeynet on-the-fly
+ - Supports prompt as code where snippets of modular prompt can be injected, for instance, on a CVE. 
+ - Adaptive yet consistent and realistic, with defense simulation (to-be)
+ - No need to code out every granular scenario.
+
+`internal intel`
+ - Generates very relevant intel without paying the price of lessons learnt
+ - Intel generated is automatically fed-back to the fingerprinter to redirect malicious actors to the honeynet.
+ - Insights provided are translated into actionables
+
