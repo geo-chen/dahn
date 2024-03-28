@@ -41,14 +41,11 @@ Attacker validates that the keys authenticate fine and attempts to enumerate:
 Under the hood, the blue team sees the attacker activities in real-time and is able to influence the attack path - for instance, if the blue team wants to capture TTP relating to databases, they can inject a "vulnerable" database service at any given point in time.
 <img width="1498" alt="image" src="https://github.com/geo-chen/dahn/assets/2404584/9b96cf2c-80ba-4bca-b42c-005f07f9cafa">
 
+In the management console above, we see the fingerprint of the current attacker, beacon data from the AWS keys used earlier, an attack path, options for blue team influence (ie injecting vulnerable service), as well as LLM-generated insights that is then fed-back to the fingerprinter for actions (ie, more comprehensive filtering/routing or behaviorial-based blocking).
 
-...
-In the demo below, the adversary has been redirected to our honey net based on the matched fingerprints that are associated with malicious behaviors. 
-Once in, the adversary would discover different honey services. In this scenario, the adversary finds a web shell and interacts with it, performing enumeration and lateral movement activities. 
-On the right, we see a preview of the logged commands, which would be correlated with the output of GPT and used for internal intel, as well as the blue team Attack-Path UI.
+Going back to the attacker's session, and having a vulnerable DB service injected by the blue team earlier, when the attacker performs the same nmap enumeration, the attacker now sees a new vulnerable DB service being spun up. We also see here that dahn understands that this is a vulnerable DB service and thus allows the attacker to successfully exploit it. We then collect intel on the attacker's toolset and behavior which would help in crafting defenses and attribution.
 
-![dahn](https://github.com/geo-chen/dahn/blob/main/resources/preview.png )
-![dahn](https://github.com/geo-chen/dahn/blob/main/resources/preview0.png )
+<img width="1286" alt="image" src="https://github.com/geo-chen/dahn/assets/2404584/5a70673a-ef36-4e7c-b6d4-faed89289723">
 
 ## Architecture
 ![image](https://github.com/geo-chen/dahn/assets/2404584/c272d63b-8e86-4dcb-b346-a92181c8138a)
