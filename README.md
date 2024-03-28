@@ -54,3 +54,13 @@ node --experimental-modules server.mjs
  - Intel generated is automatically fed-back to the fingerprinter to redirect malicious actors to the honeynet.
  - Insights provided are translated into actionables
 
+## Roadmap for 2024
+ - Dynamic generation of network map based on organization profile, naming convention, and assets. 
+ - Dynamic generation of decoys (canary API)
+ - Moving to private/other GPT models
+ - More robust fingerprinting engine with combined attributes
+ - Building on service manager
+ - Add in session aggregation for blue team monitoring
+ - Excluder to migrate false positive sessions back to legitimate services
+ - Make it harder to break the gpt-disguise
+
