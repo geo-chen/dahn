@@ -16,7 +16,16 @@ The tool comes with 3 main components:
 1. The intel component collects TTPs, behaviors, fingerprints from the observed adversaries and converts them into internal intel for actions. There’s also a blue team module that can adaptively influence the adversaries’ movements. For instance, if the blue team wants to see TTPs and IoAs relating to databases, this module releases prompts to simulate vulnerable database instances to steer and lure the attacker into attempting to exploit. The intel module would then capture the on-demand and related behavioral attributes.
 
 ## Demo
-### webshell preview
+### Session Manager
+
+We simulate the exploitation of a session manager.
+<img width="1395" alt="image" src="https://github.com/geo-chen/dahn/assets/2404584/06a65c70-3612-4f54-99c1-3a41afef5642">
+
+On the left, we see the exploited session that bypasses authentication (simulated), and on the right, a benign session.
+<img width="1408" alt="image" src="https://github.com/geo-chen/dahn/assets/2404584/ad3546b0-13fb-4bb2-8a2f-2e902deb5edd">
+
+.....
+
 In the demo below, the adversary has been redirected to our honey net based on the matched fingerprints that are associated with malicious behaviors. 
 Once in, the adversary would discover different honey services. In this scenario, the adversary finds a web shell and interacts with it, performing enumeration and lateral movement activities. 
 On the right, we see a preview of the logged commands, which would be correlated with the output of GPT and used for internal intel, as well as the blue team Attack-Path UI.
