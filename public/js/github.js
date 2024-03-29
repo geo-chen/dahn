@@ -38,4 +38,4 @@ function getReposList(user) {
     return html_table + `</table>`;
 }
 
-const repos = getReposList("-");
+const repos = getReposList("philippwulff");
