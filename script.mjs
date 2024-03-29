@@ -6,7 +6,8 @@ function generateResponse() {
     const promptInput = document.getElementById('promptInput');
     const responseDiv = document.getElementById('response');
 
-    const userPrompt = ""
+    const userPrompt = "";
+
     const apiKey = config.apiKey;
 
     fetch('/generate-response', {

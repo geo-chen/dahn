@@ -1,0 +1,132 @@
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1" />
+    <title>L</title>
+    <style>
+        input {
+            background-color: transparent;
+            color: white;
+            border: none;
+            outline: none;
+            width: 100%;
+        }
+
+        .user-command::before {
+            content: '';
+            color: green;
+        }
+
+        .response::before {
+            content: 'robin@webserver01:~$ ';
+            color: white;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/style_coral.css" />
+    <link rel="icon" type="image/x-icon" href="imgs/icon.png" />
+  </head>
+  <span tabindex="0" id="prevent-outside-tab"></span>
+  <body>
+    <div id="terminal">
+      <a id="before"></a>
+    </div>
+    <div id="command" onclick="$('promptInput').focus();">
+      <textarea
+        type="text"
+        id="texter"
+        onkeyup="typeIt(this, event)"
+        onkeydown="typeIt(this, event); 
+                   moveIt(this.value.length, event)"
+        onkeypress="typeIt(this, event);"
+        autofocus
+      ></textarea>
+      <div id="liner">
+        <!--<span id="typer"></span><b class="cursor" id="cursor">█</b>-->
+      </div>
+    </div>
+    <a id="after"></a>
+    <script src="js/github.js"></script>
+    <script src="js/caret.js"></script>
+    <script src="js/commands.js"></script>
+    <script src="js/main.js"></script>
+
+
+<div id="terminal">
+        <div class="user-command" id="userCommand"></div>
+        <div class="response" id="response"></div>
+        <input type="text" id="promptInput"  onkeydown="handleInput(event)">
+    </div>
+
+    <script>
+        const apiKey = "";
+        const initialPrompt = "";
+        document.getElementById('userCommand').innerText = '' + initialPrompt;
+
+        function generateResponse() {
+            const promptInput = document.getElementById('promptInput');
+            const userCommandDiv = document.getElementById('texter');
+            const responseDiv = document.getElementById('response');
+            const userPrompt = promptInput.value;
+
+            userCommandDiv.innerHTML += '<div class="texter">' + '</div>';
+
+            fetch('/generate-response', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Authorization': `Bearer ${apiKey}`,
+                },
+                body: `prompt=${encodeURIComponent(userPrompt)}`,
+            })
+            .then(response => response.text())
+            .then(data => {
+                const formattedResponse = '<div class="response">' + data + '</div>';
+                responseDiv.innerHTML += formattedResponse;
+                promptInput.value = '';
+                scrollToBottom(responseDiv);
+            })
+            .catch(error => {
+                console.error('Error fetching response:', error);
+            });
+        }
+
+        function handleInput(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                generateResponse();
+    logInput(); // Call the logInput function when Enter is pressed
+            }
+        }
+
+        function scrollToBottom(element) {
+            element.scrollTop = element.scrollHeight;
+        }
+
+  function logInput() {
+            const userInput = document.getElementById("promptInput").value;
+            fetch('/logInput', {
+                 method: 'POST',
+                 headers: {
+                         'Content-Type': 'application/json'
+                 },
+                 body: JSON.stringify({ input: userInput })
+            })
+            .then(response => {
+                 if (response.ok) {
+                         console.log('User input logged successfully');
+                 } else {
+                         console.error('Error logging user input');
+                 }
+            })
+            .catch(error => {
+                 console.error('Error:', error);
+            });
+  }
+
+    </script>
+  </body>
+  <!-- To disable tabbing into the address bar -->
+  <span tabindex="0" onfocus="focusTextArea()"></span>  
+
+</html>

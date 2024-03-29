@@ -1,0 +1,10 @@
+based on the user input, generate a few sets of signatures following the below format:
+
+Trigger = HTTP Method: POST; Payload: ' or '1'='1, 1' OR SLEEP; Threshold: (>5 occurrences within 10 seconds); Length >30;
+Action = Block client fingerprint + ASN across all web endpoints
+
+Trigger = !NULL("Content-Length" and "Transfer-Encoding")
+Action = Block JA3 + user-agent
+
+Trigger = Command: (/home | cat /etc/passwd | getent passwd) + (id | groups | who); Threshold: (>4 within 5 minutes)
+Action = Send device fingerprint to watchlist and alert
