@@ -1,0 +1,84 @@
+// Function to handle click event on left box
+function leftBoxClickHandler() {
+    toggleColor(this);
+    moveCircleToPosition(0);
+}
+
+// Function to handle click event on right boxes
+function rightBoxClickHandler() {
+    var rightBoxes = document.querySelectorAll("#rightBoxContainer > .box");
+    var boxIndex = Array.from(rightBoxes).indexOf(this) + 1; // Adjust index for right boxes
+    moveCircleToPosition(boxIndex);
+    toggleColor(this);
+}
+
+// Attach event listener to left box
+var leftBox = document.querySelector("#leftBoxContainer > .box");
+leftBox.addEventListener("click", leftBoxClickHandler);
+
+// Attach event listeners to right boxes
+var rightBoxes = document.querySelectorAll("#rightBoxContainer > .box");
+rightBoxes.forEach(function(box) {
+    box.addEventListener("click", rightBoxClickHandler);
+});
+
+// Function to populate right boxes
+function populateRightBoxes() {
+    var numBoxes = parseInt(prompt("Enter the number of right boxes:"));
+    var boxContainer = document.getElementById("rightBoxContainer");
+    boxContainer.innerHTML = ""; // Clear previous boxes
+
+    for (var i = 1; i <= numBoxes; i++) {
+        var box = document.createElement("div");
+        box.classList.add("box");
+        boxContainer.appendChild(box);
+
+        // Add margin-bottom to create a gap between boxes
+        if (i < numBoxes) {
+            box.style.marginBottom = "10px";
+        }
+
+        // Attach event listener after appending the box
+        box.addEventListener("click", rightBoxClickHandler);
+    }
+}
+
+// Function to move circle
+function moveCircle() {
+    var boxIndex = parseInt(prompt("Enter the box index to move the circle:"));
+    moveCircleToPosition(boxIndex);
+}
+
+// Function to toggle color of boxes
+function toggleColor(element) {
+    element.classList.toggle("red");
+}
+
+// Function to move circle to a specific position
+function moveCircleToPosition(boxIndex) {
+    var allBoxes = document.querySelectorAll(".box");
+    var box = allBoxes[boxIndex];
+    var boxRect = box.getBoundingClientRect();
+    var circle = document.querySelector(".circle");
+    var wrapperRect = document.getElementById("wrapper-container").getBoundingClientRect();
+
+    // Calculate the position of the circle relative to the box
+    var circleLeft = boxRect.left - wrapperRect.left + boxRect.width / 2 - circle.offsetWidth / 2 +10;
+    var circleTop = boxRect.top - wrapperRect.top + boxRect.height / 2 - circle.offsetHeight / 2 +10;
+    // Set the position of the circle
+    circle.style.left = circleLeft + "px";
+    circle.style.top = circleTop + "px";
+}
+
+// Call the function to populate the right boxes initially
+moveCircleToPosition(0);
+populateRightBoxes();
+
+// Add event listeners to buttons after the document is loaded
+document.getElementById("populateRightBoxesBtn").addEventListener("click", function() {
+    populateRightBoxes();
+});
+
+document.getElementById("moveCircleBtn").addEventListener("click", function() {
+    moveCircle();
+});

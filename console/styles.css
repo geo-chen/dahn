@@ -1,0 +1,297 @@
+/* General Styling */
+body {
+    background-color: #0f0f0f; /* Dark background */
+    color: #66ff66; /* Bright green text */
+    font-family: 'Courier New', Courier, monospace; /* Monospace font for a hacker feel */
+}
+
+/* Style for the wrapper container */
+#wrapper-container {
+    position: fixed;
+    top: 30%; /* Adjust top position as needed */
+    left: 0.5%; /* Adjust left position as needed */
+    width: 52%;
+    height: 40%;
+    z-index: 1000; /* Ensure the wrapper stays on top */
+    background-color: #1a1a1a; /* Dark gray background */
+    padding: 20px;
+    border: 1px solid #66ff66;
+    display: flex; /* Use flexbox to align items horizontally */
+    align-items: flex-start; /* Align items at the start (top) of the flex container */
+}
+
+/* Style for the legend */
+.legend {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: #1a1a1a;
+    padding: 10px;
+    border: 1px solid #66ff66;
+}
+
+/* Style for the legend items */
+.legend p {
+    margin: 0;
+    padding: 5px 0;
+    text-align: left;
+    margin-right: 15px;
+    color: #66ff66; /* Bright green text */
+}
+
+/* Style for the red square */
+.red-square {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background-color: red;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+/* Style for the yellow circle */
+.yellow-circle {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background-color: yellow;
+    border-radius: 50%;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+/* Style for the blue square */
+.blue-square {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background-color: blue;
+    margin-right: 5px;
+    vertical-align: middle; /* Vertical alignment set to middle */
+}
+
+
+/* Style for the label on square box */
+.box .box-content {
+    position: absolute;
+    left: calc(100% + 20px); /* Position the label to the right of the box */
+    color: #66ff66; /* Adjust text color as needed */
+    font-size: 12px; /* Adjust font size as needed */
+    text-align: center;
+}
+
+/* Style for the box label */
+.box-label {
+    text-align: center;
+    margin-bottom: 10px; /* Adjust as needed */
+    font-weight: bold;
+}
+
+/* Style for the label above right box container */
+.label-right-box-container {
+    text-align: center; 
+    margin-left: 15%; /* Adjust margin top as needed */
+    font-weight: bold;
+}
+
+
+/* Existing styles */
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, 50px); /* Two columns with width of 50px each */
+    grid-gap: 5px; /* Gap between items */
+    height: 80vh; /* Adjust height as needed */
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Make the container position relative */
+}
+.box-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.box {
+    width: 50px; /* Adjust width as needed */
+    height: 50px; /* Adjust height as needed */
+    background-color: blue;
+    cursor: pointer; /* Change cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth transition */
+    position: relative; /* Make the box position relative */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px; /* Add margin at the bottom to create a gap */
+}
+.box.red {
+    background-color: red; /* Change color to red */
+}
+.circle {
+    width: 25px; /* Adjust circle size */
+    height: 25px; /* Adjust circle size */
+    border-radius: 50%; /* Make it a circle */
+    background-color: yellow; /* Yellow color */
+    position: absolute; /* Position the circle absolutely */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Center the circle within the box */
+    z-index: 1; /* Ensure the circle appears in front */
+}
+
+/* Additional wrapper container on the right */
+#right-wrapper-container {
+    position: fixed;
+    top: 46.5%; /* Adjust top position as needed */
+    right: 0.5%; /* Adjust right position as needed */
+    width: 40.5%;
+    height: 26%;
+    padding: 0.5%;
+    display: flex; /* Use flexbox to align items horizontally */
+    flex-direction: column; /* Arrange items in a column */
+    align-items: flex-start; /* Align items at the start (top) of the container */
+    overflow: auto;
+}
+
+/* Additional wrapper button container on the right */
+#right-button-wrapper-container {
+    position: fixed;
+    top: 50%; /* Adjust top position as needed */
+    right: 5px; /* Adjust right position as needed */
+    width: 10%;
+    height: 10%;
+    padding: 20px;
+    display: flex; /* Use flexbox to align items horizontally */
+    flex-direction: column; /* Arrange items in a column */
+    align-items: flex-start; /* Align items at the start (top) of the container */
+    z-index: 1000; /* Ensure the wrapper stays on top */
+}
+
+
+/* Additional wrapper container for blue team */
+#blueteam-wrapper-container {
+    position: fixed;
+    top: 30%; /* Adjust top position as needed */
+    right: 0.5%; /* Adjust right position as needed */
+    width: 40.5%;
+    height: 15%;
+    padding: 0.5%;
+    display: flex; /* Use flexbox to align items horizontally */
+    flex-direction: row; /* Arrange items in a column */
+    align-items: center; /* Align items at the start (top) of the container */
+    text-align: center;
+}
+
+/* Additional wrapper container for activate */
+#activate-wrapper-container {
+    position: fixed;
+    top: 0.5%; /* Adjust top position as needed */
+    right: 0.5%; /* Adjust right position as needed */
+    width: 11%;
+    height: 27%;
+    padding: 0.5%;
+    display: flex; /* Use flexbox to align items horizontally */
+    flex-direction: column; /* Arrange items in a column */
+    align-items: flex-start; /* Align items at the start (top) of the container */
+}
+
+
+/* Additional wrapper container for fingerprint */
+#fingerprint-wrapper-container {
+    position: fixed;
+    top: 0.5%; /* Adjust top position as needed */
+    left: 0.5%; /* Adjust right position as needed */
+    width: 20%;
+    height: 27%;
+    padding: 0.5%;
+    display: flex; /* Use flexbox to align items horizontally */
+    flex-direction: column; /* Arrange items in a column */
+    align-items: flex-start; /* Align items at the start (top) of the container */
+}
+
+/* Fingerprint button wrapper container styles */
+#fingerprint-button-wrapper-container {
+    position: fixed; /* Set intel container as absolute */
+    top: 2%; /* Position it at the bottom */
+    left: 16%;
+    width: 10%; /* Adjust the width to match the left box container */
+    height: 10%;
+    z-index: 1000; /* Ensure the wrapper stays on top */
+}
+
+
+/* Beacon wrapper container styles */
+#beacon-wrapper-container {
+    position: fixed;
+    top: 0.5%; /* Position it at the top */
+    left: 21.5%; /* Position it at the center */
+    width: 65%; /* Adjust the width to match the left box container */
+    height: 27%;
+    overflow: auto;
+    padding: 0.5%;
+}
+
+/* Intel wrapper container styles */
+#intel-wrapper-container {
+    position: fixed; /* Set intel container as absolute */
+    bottom: 0.5%; /* Position it at the bottom */
+    left: 0.5%; /* Position it at the left */
+    right: 0.5%;
+    width: 98%; /* Adjust the width to match the left box container */
+    height: 21.5%;
+    overflow: auto;
+    padding: 0.5%;
+}
+
+/* Intel button wrapper container styles */
+#intel-button-wrapper-container {
+    position: fixed; /* Set intel container as absolute */
+    bottom: 12%; /* Position it at the bottom */
+    right: 1%;
+    width: 12%; /* Adjust the width to match the left box container */
+    height: 10%;
+    z-index: 1000; /* Ensure the wrapper stays on top */
+}
+
+/* Beacon button wrapper container styles */
+#beacon-button-wrapper-container {
+    position: fixed; /* Set intel container as absolute */
+    top: 2%; /* Position it at the bottom */
+    right: 10%;
+    width: 10%; /* Adjust the width to match the left box container */
+    height: 10%;
+    z-index: 1000; /* Ensure the wrapper stays on top */
+}
+
+.button {
+    width: 100px; /* Set width and height to make it square */
+    height: 100px;
+    background-color: #1e3a5f; /* Dark blue background color */
+    color: #66ff66; /* White font color */
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 20px; /* Round corners */
+    font-family: 'Courier New', Courier, monospace; /* Monospace font for hacker feel */
+    outline: none; /* Remove outline */
+    transition: background-color 0.3s ease; /* Smooth transition */
+    margin-right: 10px; /* Add some margin between buttons */
+    overflow-wrap: break-word; /* Allow word wrap */
+}
+
+/* Hover State */
+.button:hover {
+    background-color: #0c1a33; /* Darker blue background on hover */
+}
+
+/* Active State */
+.button:active {
+    background-color: #0c1a33; /* Darker blue background when clicked */
+    transform: translateY(1px); /* Push down slightly */
+}
+
+.blueteamtext {
+    margin-right: 20px; /* Add margin to the right of the text */
+    font-size: 20px; /* Increase font size */
+}

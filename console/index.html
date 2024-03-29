@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAHN</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS file -->
+</head>
+<body>
+    <!-- Wrapper container for the code -->
+    <div id="wrapper-container">
+        <div class="box-container" id="leftBoxContainer">
+	    <div class="box-label">Initial Compromise Box</div>
+            <div class="box">
+                <div class="box-content">192.168.1.101</div>
+	    </div>
+            <div class="circle"></div>
+        </div>
+    <!-- Right box container with label -->
+    <div class="label-right-box-container">
+        <div class="box-label">Other Machines in Internal Network</div>
+        <div class="box-container" id="rightBoxContainer"></div>
+    </div>
+        
+    </div>
+    <!-- End of wrapper container -->
+
+    <!-- Additional wrapper container on the right -->
+    <div id="right-wrapper-container">
+        <!-- Log content will be displayed here -->
+    </div>
+
+    <!-- Additional wrapper container on the right -->
+    <div id="right-button-wrapper-container">
+        <!-- Log content will be displayed here -->
+        <button id="clearLogBtn">Clear Log</button>
+    </div>
+
+
+   <!-- Additional wrapper container for activate -->
+    <div id="activate-wrapper-container">
+        <!-- Log content will be displayed here -->
+    </div>
+
+
+   <!-- Additional wrapper container for fingerprint -->
+    <div id="fingerprint-wrapper-container">
+        <!-- Log content will be displayed here -->
+    </div>
+
+   <!-- Additional wrapper container for fingerprint button-->
+    <div id="fingerprint-button-wrapper-container">
+        <!-- Log content will be displayed here -->
+        <button id="clearFingerprintBtn">Clear Log</button>
+    </div>
+
+    <!-- Additional wrapper container for blue team -->
+    <div id="blueteam-wrapper-container">
+	<p class="blueteamtext"> Blue Team Influence </p>
+	<button id="blueteambutton1" class="button">DB</button>
+	<button id="blueteambutton2" class="button">Web Server</button>
+        <button id="blueteambutton3" class="button">Load Balancer</button>
+        <button id="blueteambutton4" class="button">Firewall</button>
+        <button id="blueteambutton5" class="button">Others</button>
+        <!-- Log content will be displayed here -->
+    </div>
+
+
+    <!-- Additional wrapper container for intel data -->
+    <div id="intel-wrapper-container">
+        <!-- Log content will be displayed here -->
+    </div>
+
+    <!-- Additional wrapper container for intel button data -->
+    <div id="intel-button-wrapper-container">
+        <!-- Log content will be displayed here -->
+	<button id="regenerateIntelBtn">Regenerate Intel Data</button>
+    </div>
+
+    <!-- Additional wrapper container for Beacon data -->
+    <div id="beacon-wrapper-container">
+        <!-- Beacon data will be displayed here -->
+    </div>
+
+    <!-- Additional wrapper container for Beacon button -->
+    <div id="beacon-button-wrapper-container">
+        <!-- Beacon data will be displayed here -->
+	<button id="clearBeaconLogBtn">Clear Log</button>
+    </div>
+
+
+    <!-- Include the external JavaScript file -->
+    <script src="script.js"></script>
+
+    <script type="module">
+        // Function to fetch and display the Honeylog content
+        async function displayHoneylog() {
+            try {
+                const response = await fetch('http://dahn.store:3000/dahn/userInput');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch Honeylog.');
+                }
+                const data = await response.text();
+                // Display the Honeylog content in the right wrapper container
+                const rightWrapperContainer = document.getElementById("right-wrapper-container");
+                rightWrapperContainer.innerHTML = "<pre>" + data + "</pre>";
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Failed to read Honeylog.'); // Notify user if reading Honeylog fails
+            }
+        }
+
+
+        // Function to fetch and display the Beacon data
+        async function displayBeacon() {
+            try {
+                const response = await fetch('http://dahn.store:3000/dahn/beacon');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch Beacon data.');
+                }
+            	const html = await response.text();
+            	// Display the Beacon HTML content in the Beacon wrapper container
+            	const beaconWrapperContainer = document.getElementById("beacon-wrapper-container");
+            	beaconWrapperContainer.innerHTML = html;
+    	    } catch (error) {
+            	console.error('Error:', error);
+            	alert('Failed to fetch Beacon data.'); // Notify user if fetching Beacon data fails
+    	    }
+    	}
+
+        // Function to fetch and display the Fingerprint data
+        async function displayFingerprint() {
+            try {
+                const response = await fetch('http://dahn.store:3000/dahn/fingerprint');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch Fingerprint data.');
+                }
+            	const html = await response.text();
+            	// Display the Beacon HTML content in the Beacon wrapper container
+            	const fingerprintWrapperContainer = document.getElementById("fingerprint-wrapper-container");
+            	fingerprintWrapperContainer.innerHTML = html;
+    	    } catch (error) {
+            	console.error('Error:', error);
+            	alert('Failed to fetch Fingerprint data.'); // Notify user if fetching Fingerprint data fails
+    	    }
+    	}
+
+
+
+	// Function to fetch and display the Intel data
+	async function displayIntel() {
+    	    try {
+        	const response = await fetch('http://dahn.store:3000/dahn/intel');
+        	if (!response.ok) {
+            	    throw new Error('Failed to fetch Intel data.');
+        	}
+        	const data = await response.text();
+        	// Display the Intel content in the Intel wrapper container
+        	const intelWrapperContainer = document.getElementById("intel-wrapper-container");
+        	intelWrapperContainer.innerHTML = data;
+   	    } catch (error) {
+        	console.error('Error:', error);
+        	alert('Failed to fetch Intel data.'); // Notify user if fetching Intel data fails
+    	    }
+    	}
+
+	// Function to handle button click event for regenerating Intel data
+	document.getElementById("regenerateIntelBtn").addEventListener("click", () => {
+    	    displayIntel();
+	});
+
+
+        // Call the functions to display Honeylog and Beacon and Fingerprint data initially
+        displayHoneylog();
+        displayBeacon();
+	displayFingerprint();
+	// Call the function to display Intel data initially
+	displayIntel();
+
+        // Automatically refresh Honeylog and Beacon and Fingerprint data every 5 seconds
+        setInterval(() => {
+            displayHoneylog();
+            displayBeacon();
+	    displayFingerprint();
+        }, 5000);
+
+        // Function to handle the button click event
+        document.getElementById("clearLogBtn").addEventListener("click", function() {
+            // Make a GET request to clear the log
+            fetch('http://dahn.store:3000/dahn/clear/userinputlog')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to clear log');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    alert(data); // Display success message
+                })
+                .catch(error => {
+                    console.error('Error clearing log:', error);
+                    alert('Failed to clear log'); // Display error message
+                });
+        });
+
+        // Function to handle the button click event
+        document.getElementById("clearFingerprintBtn").addEventListener("click", function() {
+            // Make a GET request to clear the log
+            fetch('http://dahn.store:3000/dahn/clear/fingerprintlog')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to clear log');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    alert(data); // Display success message
+                })
+                .catch(error => {
+                    console.error('Error clearing log:', error);
+                    alert('Failed to clear log'); // Display error message
+                });
+        });
+
+
+        // Function to handle the button click event
+        document.getElementById("clearBeaconLogBtn").addEventListener("click", function() {
+            // Make a GET request to clear the log
+            fetch('http://dahn.store:3000/dahn/clear/beacon')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to clear log');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    alert(data); // Display success message
+                })
+                .catch(error => {
+                    console.error('Error clearing log:', error);
+                    alert('Failed to clear log'); // Display error message
+                });
+        });
+
+  	document.getElementById("blueteambutton1").addEventListener("click", function() {
+    	    performGetRequest('http://dahn.store:3000/dahn/adddb');
+  	});
+        document.getElementById("blueteambutton2").addEventListener("click", function() {
+            performGetRequest('https://example.com/b');
+        });
+        document.getElementById("blueteambutton3").addEventListener("click", function() {
+            performGetRequest('https://example.com/c');
+        });
+        document.getElementById("blueteambutton4").addEventListener("click", function() {
+            performGetRequest('https://example.com/d');
+        });
+        document.getElementById("blueteambutton5").addEventListener("click", function() {
+            performGetRequest('https://example.com/e');
+        });
+
+
+  	function performGetRequest(url) {
+    	    fetch(url)
+      		.then(response => {
+        	    if (!response.ok) {
+          		throw new Error('Network response was not ok');
+        	    }
+        	    return response.text();
+      		})
+      		.then(data => {
+        	    console.log('Success:', data);
+        // Do something with the response data if needed
+      		})
+      		.catch(error => {
+        	    console.error('Error:', error);
+        // Handle errors if necessary
+      		});
+  	}
+
+
+    </script>
+</body>
+</html>

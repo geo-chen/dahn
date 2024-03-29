@@ -1,0 +1,202 @@
+/* Style for the wrapper container */
+#wrapper-container {
+    position: fixed;
+    top: 30%; /* Adjust top position as needed */
+    left: 0.5%; /* Adjust left position as needed */
+    width: 52%;
+    height: 40%;
+    z-index: 1000; /* Ensure the wrapper stays on top */
+    background-color: white; /* Background color for visibility */
+    padding: 20px;
+    border: 1px solid black;
+    display: flex; /* Use flexbox to align items horizontally */
+    align-items: flex-start; /* Align items at the start (top) of the flex container */
+}
+
+/* Existing styles */
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, 50px); /* Two columns with width of 50px each */
+    grid-gap: 5px; /* Gap between items */
+    height: 80vh; /* Adjust height as needed */
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Make the container position relative */
+}
+.box-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.box {
+    width: 50px; /* Adjust width as needed */
+    height: 50px; /* Adjust height as needed */
+    background-color: blue;
+    cursor: pointer; /* Change cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth transition */
+    position: relative; /* Make the box position relative */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px; /* Add margin at the bottom to create a gap */
+}
+.box.red {
+    background-color: red; /* Change color to red */
+}
+.circle {
+    width: 25px; /* Adjust circle size */
+    height: 25px; /* Adjust circle size */
+    border-radius: 50%; /* Make it a circle */
+    background-color: yellow; /* Yellow color */
+    position: absolute; /* Position the circle absolutely */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Center the circle within the box */
+    z-index: 1; /* Ensure the circle appears in front */
+}
+
+/* Additional wrapper container on the right */
+#right-wrapper-container {
+    position: fixed;
+    top: 46.5%; /* Adjust top position as needed */
+    right: 0.5%; /* Adjust right position as needed */
+    width: 40.5%;
+    height: 26%;
+    background-color: white; /* Background color for visibility */
+    padding: 0.5%;
+    border: 1px solid black;
+    display: flex; /* Use flexbox to align items horizontally */
+    flex-direction: column; /* Arrange items in a column */
+    align-items: flex-start; /* Align items at the start (top) of the container */
+    overflow: auto;
+}
+
+/* Additional wrapper button container on the right */
+#right-button-wrapper-container {
+    position: fixed;
+    top: 50%; /* Adjust top position as needed */
+    right: 5px; /* Adjust right position as needed */
+    width: 10%;
+    height: 10%;
+    padding: 20px;
+    display: flex; /* Use flexbox to align items horizontally */
+    flex-direction: column; /* Arrange items in a column */
+    align-items: flex-start; /* Align items at the start (top) of the container */
+    z-index: 1000; /* Ensure the wrapper stays on top */
+}
+
+
+/* Additional wrapper container for blue team */
+#blueteam-wrapper-container {
+    position: fixed;
+    top: 30%; /* Adjust top position as needed */
+    right: 0.5%; /* Adjust right position as needed */
+    width: 40.5%;
+    height: 15%;
+    background-color: white; /* Background color for visibility */
+    padding: 0.5%;
+    border: 1px solid black;
+    display: flex; /* Use flexbox to align items horizontally */
+    flex-direction: row; /* Arrange items in a column */
+    align-items: center; /* Align items at the start (top) of the container */
+    text-align: center;
+}
+
+/* Additional wrapper container for activate */
+#activate-wrapper-container {
+    position: fixed;
+    top: 0.5%; /* Adjust top position as needed */
+    right: 0.5%; /* Adjust right position as needed */
+    width: 11%;
+    height: 27%;
+    background-color: white; /* Background color for visibility */
+    padding: 0.5%;
+    border: 1px solid black;
+    display: flex; /* Use flexbox to align items horizontally */
+    flex-direction: column; /* Arrange items in a column */
+    align-items: flex-start; /* Align items at the start (top) of the container */
+}
+
+
+/* Additional wrapper container for fingerprint */
+#fingerprint-wrapper-container {
+    position: fixed;
+    top: 0.5%; /* Adjust top position as needed */
+    left: 0.5%; /* Adjust right position as needed */
+    width: 20%;
+    height: 27%;
+    background-color: white; /* Background color for visibility */
+    padding: 0.5%;
+    border: 1px solid black;
+    display: flex; /* Use flexbox to align items horizontally */
+    flex-direction: column; /* Arrange items in a column */
+    align-items: flex-start; /* Align items at the start (top) of the container */
+}
+
+
+/* Beacon wrapper container styles */
+#beacon-wrapper-container {
+    position: fixed;
+    top: 0.5%; /* Position it at the top */
+    left: 21.5%; /* Position it at the center */
+    width: 65%; /* Adjust the width to match the left box container */
+    height: 27%;
+    overflow: auto;
+    border: 1px solid black;
+    padding: 0.5%;
+}
+
+/* Intel wrapper container styles */
+#intel-wrapper-container {
+    position: fixed; /* Set intel container as absolute */
+    bottom: 0.5%; /* Position it at the bottom */
+    left: 0.5%; /* Position it at the left */
+    right: 0.5%;
+    width: 98%; /* Adjust the width to match the left box container */
+    height: 21.5%;
+    overflow: auto;
+    border: 1px solid black;
+    padding: 0.5%;
+}
+
+/* Intel button wrapper container styles */
+#intel-button-wrapper-container {
+    position: fixed; /* Set intel container as absolute */
+    bottom: 12%; /* Position it at the bottom */
+    right: 1%;
+    width: 12%; /* Adjust the width to match the left box container */
+    height: 10%;
+    z-index: 1000; /* Ensure the wrapper stays on top */
+}
+
+/* Beacon button wrapper container styles */
+#beacon-button-wrapper-container {
+    position: fixed; /* Set intel container as absolute */
+    top: 2%; /* Position it at the bottom */
+    right: 10%;
+    width: 10%; /* Adjust the width to match the left box container */
+    height: 10%;
+    z-index: 1000; /* Ensure the wrapper stays on top */
+}
+
+.button {
+    width: 100px; /* Set width and height to make it square */
+    height: 100px;
+    background-color: #1e3a5f; /* Dark blue background color */
+    color: white; /* White font color */
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px; /* Add some border-radius for a slightly rounded appearance */
+    font-family: Arial, sans-serif; /* Use Arial or a sans-serif font for good readability */
+    margin-right: 10px; /* Add some margin between buttons */
+    overflow-wrap: break-word; /* Allow word wrap */
+}
+
+.blueteamtext {
+    margin-right: 20px; /* Add margin to the right of the text */
+    font-size: 20px; /* Increase font size */
+}
